@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/index.css')}}">
+	<title>index page</title>
+
+	
+</head>
+<body>
+
+
+<h2> Click download link below </h2>
+
+<button class="button outputButton" id="outputButton" type="button" onclick="window.location.href='{{url_for('download_output_file')}}';" disabled>
+Impacted Elements</button>
+
+<button class="button ImpactsButton" id="ImpactsButton" type="button" onclick="window.location.href='{{url_for('download_impacts_file')}}';" disabled>
+Impacts file</button>
+
+	<script type="text/javascript">
+	var myVar = {{ data | tojson }}
+    console.log("myVar is");
+    console.log(myVar);
+    var json_data = JSON.stringify(myVar);
+    var im_ele = json_data.substr(11,3);
+    console.log(im_ele);
+    console.log(im_ele=="yes")
+    var im_file;
+    if(im_ele=="yes"){
+        document.getElementById("outputButton").disabled = false;
+        im_file = json_data.substr(27,3);
+    }
+    else{
+        im_file = json_data.substr(26,3);
+    }
+    console.log(im_file);
+    console.log(im_file=="yes")
+    if(im_file=="yes"){
+        document.getElementById("ImpactsButton").disabled = false;
+    }
+
+	
+	</script> 
+</body>

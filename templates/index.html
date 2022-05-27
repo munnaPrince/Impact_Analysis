@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>index page</title>
+     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/index.css')}}">
+      <!--  <link rel="stylesheet" type="text/css" href="../static/css/index.css">  -->
+	
+</head>
+<body>
+<script type="text/javascript" src="{{url_for('static',filename='js/index.js')}}"></script> 
+
+	<div class="main-container">
+    		<div class="child1">
+    			<form action="\predict" method="post" enctype="multipart/form-data">
+    				<div class="filediv">
+    					<table>
+    						<tr>
+    							<td><label for="inputfile">Upload the input file:</label></td>
+    							<td><input type="file" id="inputfile" name="inputfile" placeholder="upload the .txt file" required onchange="return getFileExtension();"/></td>
+    						</tr>
+    						<br>
+    						<tr>
+    							<td><label for="analysis">Select the Impact Analysis type</label></td>
+    							<td><select name="analysis" id="analysis" required="required">
+    								<option value = "cycy">COPYBOOK TO COPYBOOK</option>
+    								<option value = "cycb">COPYBOOK TO COBOL</option>
+    								<option value = "cbcb">COBOL TO COBOL</option>
+    								<option value = "procs">JCL TO PROCS</option>
+    							</select></td>
+    						</tr>
+    					</table>
+    				</div>
+    				<div class="tableclass">
+    					<table>
+    						<tr>
+    							<th>Yes</th>
+    							<th>No</th>
+    							<th>Description</th>
+    						</tr>
+    						<tr>
+    							<td><input type="radio" id="r1" name="r1" value="yes" required></td>
+    							<td><input type="radio" id="r1" name="r1" value="no" required></td>
+    							<td class="desc">Static impact analysis</td>
+    						</tr>
+    						<tr>
+    							<td><input type="radio" id="r2" name="r2" value="yes" required></td>
+    							<td><input type="radio" id="r2" name="r2" value="no" required></td>
+    							<td class="desc">Dynamic impact analysis</td>
+    						</tr>
+    						<tr>
+    							<td><input type="radio" id="r3" name="r3" value="yes" required></td>
+    							<td><input type="radio" id="r3" name="r3" value="no" required></td>
+    							<td class="desc">Do you want Impacted file?(contains all impacted details)</td>
+    						</tr>
+    						<tr>
+    							<td><input type="radio" id="r4" name="r4" value="yes" required></td>
+    							<td><input type="radio" id="r4" name="r4" value="no" required></td>
+    							<td class="desc">Do you want Impacted Elements file?</td>
+    						</tr>
+    					</table>
+    				</div>
+    				<input id="button" type="submit" name="submit" >
+    			</form>
+    		</div>
+    	
+	</div>
+</body>
+</html>
